@@ -1,0 +1,3 @@
+add_lunch_combo omni_d802-userdebug
+add_lunch_combo full_d802-userdebug
+
