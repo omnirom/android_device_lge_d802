@@ -1,5 +1,5 @@
-# Copyright (C) 2013 OmniROM Project
-# Copyright (C) 2012 The CyanogenMod Project
+#
+# Copyright 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,23 +12,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+
+# Sample: This is where we'd set a backup provider if we had one
+# $(call inherit-product, device/sample/products/backup_overlay.mk)
 
 # Get the long list of APNs
-PRODUCT_COPY_FILES := vendor/omni/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# This is where we'd set a backup provider if we had one
-#$(call inherit-product, device/sample/products/backup_overlay.mk)
-$(call inherit-product, device/lge/d802/device.mk)
-
-# Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_d802
 PRODUCT_DEVICE := d802
-PRODUCT_BRAND := lge
+PRODUCT_NAME := full_d802
+PRODUCT_BRAND := LGE
+PRODUCT_MODEL := LG-D802
 PRODUCT_MANUFACTURER := lge
-PRODUCT_MODEL := LG G2
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/lge/d802/device.mk)
+$(call inherit-product-if-exists, vendor/lge/d802/d802-vendor.mk)
