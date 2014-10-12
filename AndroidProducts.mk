@@ -15,6 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_d802.mk \
-    $(LOCAL_DIR)/full_d802.mk \
     $(LOCAL_DIR)/omni_d802.mk
